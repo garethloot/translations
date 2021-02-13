@@ -1,0 +1,105 @@
+{
+  "data": {
+    "allTranslation": {
+      "results": [
+        {
+          "createdAt": "2021-02-12T15:37:31+01:00",
+          "id": 1,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:10+01:00",
+            "id": 1,
+            "key": "next",
+            "updatedAt": "2021-02-12T15:36:10+01:00"
+          },
+          "updatedAt": "2021-02-12T15:37:31+01:00",
+          "value": "Volgende"
+        },
+        {
+          "createdAt": "2021-02-12T15:38:03+01:00",
+          "id": 2,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:18+01:00",
+            "id": 2,
+            "key": "previous",
+            "updatedAt": "2021-02-12T15:36:18+01:00"
+          },
+          "updatedAt": "2021-02-12T15:38:03+01:00",
+          "value": "Vorige"
+        },
+        {
+          "createdAt": "2021-02-12T15:38:29+01:00",
+          "id": 3,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:37+01:00",
+            "id": 3,
+            "key": "login",
+            "updatedAt": "2021-02-12T15:36:37+01:00"
+          },
+          "updatedAt": "2021-02-12T15:38:29+01:00",
+          "value": "Inloggen"
+        },
+        {
+          "createdAt": "2021-02-12T15:38:47+01:00",
+          "id": 4,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:48+01:00",
+            "id": 4,
+            "key": "logout",
+            "updatedAt": "2021-02-12T15:36:48+01:00"
+          },
+          "updatedAt": "2021-02-12T15:38:47+01:00",
+          "value": "Uitloggen"
+        },
+        {
+          "createdAt": "2021-02-12T15:39:01+01:00",
+          "id": 5,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:37+01:00",
+            "id": 3,
+            "key": "login",
+            "updatedAt": "2021-02-12T15:36:37+01:00"
+          },
+          "updatedAt": "2021-02-12T15:39:01+01:00",
+          "value": "Login"
+        },
+        {
+          "createdAt": "2021-02-12T15:39:13+01:00",
+          "id": 6,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:48+01:00",
+            "id": 4,
+            "key": "logout",
+            "updatedAt": "2021-02-12T15:36:48+01:00"
+          },
+          "updatedAt": "2021-02-12T15:39:13+01:00",
+          "value": "Logout"
+        },
+        {
+          "createdAt": "2021-02-12T15:39:21+01:00",
+          "id": 7,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:10+01:00",
+            "id": 1,
+            "key": "next",
+            "updatedAt": "2021-02-12T15:36:10+01:00"
+          },
+          "updatedAt": "2021-02-12T15:39:21+01:00",
+          "value": "Next"
+        },
+        {
+          "createdAt": "2021-02-12T15:39:33+01:00",
+          "id": 8,
+          "translationkey": {
+            "createdAt": "2021-02-12T15:36:18+01:00",
+            "id": 2,
+            "key": "previous",
+            "updatedAt": "2021-02-12T15:36:18+01:00"
+          },
+          "updatedAt": "2021-02-12T15:39:33+01:00",
+          "value": "Previous"
+        }
+      ],
+      "totalCount": 8
+    }
+  }
+}

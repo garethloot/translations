@@ -34,7 +34,7 @@ const useText = variable => {
     .join('');
 };
 
-export function overrideTextHook() {
+export default function overrideTextHook() {
   if (window.artifact) {
     window.firstLoad = true;
     window.onload = () => {
