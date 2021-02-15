@@ -7,6 +7,7 @@
     const { env, useAllQuery, getProperty } = B;
     const { modelId, translateData, keyProperty, valueProperty } = options;
     const isDev = env === 'dev';
+    const isFirstLoad = !isDev && window.firstLoad;
 
     function reload() {
       const history = useHistory();
@@ -18,6 +19,7 @@
     }
 
     const { data, refetch } =
+      isFirstLoad &&
       modelId &&
       useAllQuery(modelId, {
         take: 200,
@@ -36,7 +38,7 @@
         });
       }
       localStorage.setItem('translations', JSON.stringify(translations));
-      if (window.firstLoad) {
+      if (isFirstLoad) {
         window.firstLoad = false;
         reload();
       }

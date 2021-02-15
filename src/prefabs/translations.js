@@ -31,12 +31,6 @@
           },
         },
         {
-          type: 'ENDPOINT',
-          label: 'Redirect endpoint',
-          key: 'endpoint',
-          value: '',
-        },
-        {
           type: 'TOGGLE',
           label: 'Translate data',
           key: 'translateData',
