@@ -4,21 +4,17 @@
   allowedTypes: [],
   orientation: 'HORIZONTAL',
   jsx: (() => {
-    const { env, useAllQuery, useEndpoint, getProperty } = B;
-    const {
-      modelId,
-      translateData,
-      keyProperty,
-      valueProperty,
-      endpoint,
-    } = options;
+    const { env, useAllQuery, getProperty } = B;
+    const { modelId, translateData, keyProperty, valueProperty } = options;
     const isDev = env === 'dev';
 
-    function redirect() {
-      if (endpoint) {
-        const history = useHistory();
-        history.push(useEndpoint(endpoint));
-      }
+    function reload() {
+      const history = useHistory();
+      const current = location.pathname;
+      history.replace(`/reload`);
+      setTimeout(() => {
+        history.replace(current);
+      });
     }
 
     const { data, refetch } =
@@ -28,10 +24,6 @@
       });
 
     B.defineFunction('Load Translations', () => refetch());
-    B.defineFunction('Load Translations and Redirect', () => {
-      window.redirect = true;
-      redirect();
-    });
 
     if (data && !isDev) {
       const { results } = data;
@@ -44,12 +36,10 @@
         });
       }
       localStorage.setItem('translations', JSON.stringify(translations));
-      if (window.firstLoad || window.redirect) {
+      if (window.firstLoad) {
         window.firstLoad = false;
-        window.redirect = false;
-        redirect();
+        reload();
       }
-      B.triggerEvent('onSuccess');
     }
 
     return isDev ? <div>Translations</div> : <></>;
