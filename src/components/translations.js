@@ -8,8 +8,6 @@
     const {
       modelId,
       translateData,
-      keyPath,
-      valuePath,
       keyProperty,
       valueProperty,
       endpoint,
@@ -17,43 +15,41 @@
     const isDev = env === 'dev';
 
     function redirect() {
-      const history = useHistory();
-      history.push(useEndpoint(endpoint));
+      if (endpoint) {
+        const history = useHistory();
+        history.push(useEndpoint(endpoint));
+      }
     }
 
-    const { loading, error, data, refetch } =
+    const { data, refetch } =
       modelId &&
       useAllQuery(modelId, {
         take: 200,
       });
 
-    B.defineFunction('Translate', () => refetch());
-    B.defineFunction('Translate and redirect', () => refetch());
-
-    function deepFind(obj, path) {
-      let object = obj;
-      for (var i = 0, path = path.split('.'), len = path.length; i < len; i++) {
-        object = obj[path[i]];
-      }
-      return object;
-    }
+    B.defineFunction('Load Translations', () => refetch());
+    B.defineFunction('Load Translations and Redirect', () => {
+      window.redirect = true;
+      redirect();
+    });
 
     if (data && !isDev) {
-      const { results, totalCount } = data;
+      const { results } = data;
       const translations = {};
       const { name: key } = getProperty(keyProperty);
       const { name: value } = getProperty(valueProperty);
-      const itemKey = keyPath === '' ? key : `${keyPath}.${key}`;
-      const itemValue = valuePath === '' ? value : `${valuePath}.${value}`;
-      console.log(itemKey, itemValue);
       if (results) {
         results.forEach(item => {
-          console.log(deepFind(item, keyPath), deepFind(item, itemValue));
-          translations[deepFind(item, keyPath)] =
-            item[deepFind(item, itemValue)];
+          translations[item[key]] = item[value];
         });
       }
       localStorage.setItem('translations', JSON.stringify(translations));
+      if (window.firstLoad || window.redirect) {
+        window.firstLoad = false;
+        window.redirect = false;
+        redirect();
+      }
+      B.triggerEvent('onSuccess');
     }
 
     return isDev ? <div>Translations</div> : <></>;

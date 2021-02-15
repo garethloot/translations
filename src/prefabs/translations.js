@@ -22,12 +22,6 @@
           },
         },
         {
-          type: 'TEXT',
-          label: 'Relation path',
-          key: 'keyPath',
-          value: '',
-        },
-        {
           type: 'PROPERTY',
           label: 'Value property',
           key: 'valueProperty',
@@ -35,12 +29,6 @@
           configuration: {
             dependsOn: 'modelId',
           },
-        },
-        {
-          type: 'TEXT',
-          label: 'Relation path',
-          key: 'valuePath',
-          value: '',
         },
         {
           type: 'ENDPOINT',

@@ -13,7 +13,7 @@ const translateText = (value, translations) => {
 
 const useText = variable => {
   const translations = JSON.parse(localStorage.getItem('translations'));
-  const translateData = localStorage.getItem('translateData');
+  const translateData = localStorage.getItem('translateData') || false;
   return variable
     .map(value => {
       if (typeof value === 'string') {
@@ -21,12 +21,12 @@ const useText = variable => {
       }
       if (value.type === 'PROPERTY' || value.type === 'ME_PROPERTY') {
         return translateData
-          ? translateText(useProperty(value), translations)
-          : useProperty(value);
+          ? translateText(window.global.useProperty(value), translations)
+          : window.global.useProperty(value);
       }
 
       if (value.type === 'VARIABLE') {
-        return useVariable(value);
+        return window.global.useVariable(value);
       }
 
       return null;
