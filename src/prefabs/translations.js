@@ -7,6 +7,26 @@
       name: 'translations',
       options: [
         {
+          type: 'CUSTOM',
+          label: 'Fetch type',
+          key: 'fetchType',
+          value: 'onMount',
+          configuration: {
+            as: 'BUTTONGROUP',
+            dataType: 'string',
+            allowedInput: [
+              {
+                name: 'On Mount',
+                value: 'onMount',
+              },
+              {
+                name: 'Interaction',
+                value: 'interaction',
+              },
+            ],
+          },
+        },
+        {
           type: 'MODEL',
           label: 'Model',
           key: 'modelId',

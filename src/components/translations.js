@@ -5,9 +5,15 @@
   orientation: 'HORIZONTAL',
   jsx: (() => {
     const { env, useAllQuery, getProperty } = B;
-    const { modelId, translateData, keyProperty, valueProperty } = options;
+    const {
+      modelId,
+      translateData,
+      fetchType,
+      keyProperty,
+      valueProperty,
+    } = options;
     const isDev = env === 'dev';
-    const isFirstLoad = !isDev && window.firstLoad;
+    const doLoad = (!isDev && window.firstLoad) || fetchType === 'interaction';
 
     if (translateData) localStorage.setItem('translateData', true);
 
@@ -21,13 +27,16 @@
     }
 
     const { data, refetch } =
-      isFirstLoad &&
+      doLoad &&
       modelId &&
       useAllQuery(modelId, {
         take: 200,
       });
 
-    B.defineFunction('Load Translations', () => refetch());
+    B.defineFunction('Load Translations', () => {
+      window.firstLoad = true;
+      refetch();
+    });
 
     if (data && !isDev) {
       const { results } = data;
@@ -40,7 +49,7 @@
         });
       }
       localStorage.setItem('translations', JSON.stringify(translations));
-      if (isFirstLoad) {
+      if (window.firstLoad) {
         window.firstLoad = false;
         reload();
       }
