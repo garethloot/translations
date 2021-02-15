@@ -9,6 +9,8 @@
     const isDev = env === 'dev';
     const isFirstLoad = !isDev && window.firstLoad;
 
+    if (translateData) localStorage.setItem('translateData', true);
+
     function reload() {
       const history = useHistory();
       const current = location.pathname;
