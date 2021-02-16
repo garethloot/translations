@@ -7,6 +7,7 @@
     const { env, useAllQuery, getProperty } = B;
     const {
       modelId,
+      filter: where,
       translateData,
       fetchType,
       keyProperty,
@@ -30,6 +31,7 @@
       doLoad &&
       modelId &&
       useAllQuery(modelId, {
+        filter: where,
         take: 200,
       });
 

@@ -33,6 +33,15 @@
           value: '',
         },
         {
+          type: 'FILTER',
+          label: 'Filter',
+          key: 'filter',
+          value: {},
+          configuration: {
+            dependsOn: 'modelId',
+          },
+        },
+        {
           type: 'PROPERTY',
           label: 'Key property',
           key: 'keyProperty',
